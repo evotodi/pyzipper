@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Sebastian Weigand <s.weigand.phy@gmail.com>
+* Justin Davis <evotodi@gmail.com>

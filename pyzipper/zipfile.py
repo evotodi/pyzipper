@@ -1678,7 +1678,7 @@ class ZipFile:
     zipwritefile_cls = _ZipWriteFile
 
     def __init__(self, file, mode="r", compression=ZIP_STORED, allowZip64=True,
-                 compresslevel=None, *, strict_timestamps=True):
+                 compresslevel=None, *, strict_timestamps=True, callback=None):
         """Open the ZIP file with mode read 'r', write 'w', exclusive create
         'x', or append 'a'."""
         if mode not in ('r', 'w', 'x', 'a'):
@@ -1699,6 +1699,8 @@ class ZipFile:
         self.encryption_kwargs = None
         self._comment = b''
         self._strict_timestamps = strict_timestamps
+        self.callback = callback
+        self._callbackcounter = 0
 
         # Check if we were passed a file-like object
         # os.PathLike and os.fspath were added in python 3.6
@@ -2143,12 +2145,15 @@ class ZipFile:
         if member.is_dir():
             if not os.path.isdir(targetpath):
                 os.mkdir(targetpath)
+            self._callbackcounter += 1
             return targetpath
 
         with self.open(member, pwd=pwd) as source, \
                 open(targetpath, "wb") as target:
             shutil.copyfileobj(source, target)
-
+        if self.callback is not None:
+            self.callback({'total': len(self.namelist()), 'current': self._callbackcounter, 'file': member.filename})
+            self._callbackcounter += 1
         return targetpath
 
     def _writecheck(self, zinfo):
