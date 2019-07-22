@@ -15,8 +15,8 @@ from setuptools import find_packages, setup, Command
 NAME = 'pyzipper'
 DESCRIPTION = 'AES encryption for zipfile.'
 URL = 'https://github.com/danifus/pyzipper'
-EMAIL = 'daniel.hillier@gmail.com'
-AUTHOR = 'Daniel Hillier'
+EMAIL = 'evotodi@gmail.com'
+AUTHOR = 'Daniel Hillier/Justin Davis'
 REQUIRES_PYTHON = '>=3.4'
 VERSION = None
 
