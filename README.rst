@@ -15,6 +15,7 @@ pyzipper
 ========
 
 A 100% API compatible replacement for Python's ``zipfile`` that can read and write AES encrypted zip files.
+Callback function added to extracting zipfiles
 
 Installation
 ------------
