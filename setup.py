@@ -12,11 +12,11 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'pyzipper'
+NAME = 'evo-pyzipper'
 DESCRIPTION = 'AES encryption for zipfile. Including Callback.'
 URL = 'https://github.com/evotodi/pyzipper'
 EMAIL = 'evotodi@gmail.com'
-AUTHOR = 'Daniel Hillier/Justin Davis'
+AUTHOR = 'Justin Davis'
 REQUIRES_PYTHON = '>=3.4'
 VERSION = '0.3.2'
 
